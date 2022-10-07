@@ -1,0 +1,30 @@
+@font-face {
+  font-family: "FabricMDL2Icons";
+  src: url("../fonts/fabric-icons.woff") format("woff");
+}
+
+.icon {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-family: "FabricMDL2Icons";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  color: #444444;
+}
+
+.icon--Delete:before {
+  content: "\E74D";
+}
+
+.icon--Add:before {
+  font-size: 12px;
+  font-weight: bolder;
+  content: "\E710";
+  color: #0078d4;
+}
+
+.dropdown {
+  width: 135px;
+}

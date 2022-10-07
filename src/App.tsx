@@ -1,24 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Switch } from "@visualbi/bifrost-ui/dist/react/forms/Switch";
+import Button from "./components/Button";
+import { Radio } from "@visualbi/bifrost-ui/dist/react/forms/Radio";
+import React, { useState } from "react";
+import "./css/App.css";
+import { PopupComponent } from "./components/PopupComponent";
+import DropdownComponent from "./components/Dropdown";
 
-function App() {
+export interface IAppProps {
+  children?: any;
+}
+
+function App({ children }: IAppProps) {
+  const [isEnabled, setIsEnabled] = useState(false);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Switch
+        value={true}
+        className="filter-persist"
+        label="Disable all"
+        onChange={() => null}
+      />
+      <Button text="Advanced" />
+      <Radio
+        label="And"
+        value={isEnabled}
+        onChange={() => setIsEnabled(!isEnabled)}
+      />
+      <i className="icon icon--Delete"></i>
+      <i className="icon icon--Add"></i>
+      <DropdownComponent />
+      <PopupComponent />
     </div>
   );
 }
