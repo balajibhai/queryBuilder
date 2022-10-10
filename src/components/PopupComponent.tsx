@@ -1,12 +1,29 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Switch } from "@visualbi/bifrost-ui/dist/react/forms/Switch";
 import Popup from "reactjs-popup";
 import "../css/PopupComponent.css";
 import Button from "./Button";
 import Selectors from "./Selectors";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const PopupComponent = () => {
-  const [addClick, isAddClick] = useState(false);
+  const [addClick, setAddClick] = useState(false);
+  const [rules, setRules] = useState<any>([]);
+
+  useEffect(() => {
+    if (addClick) {
+      setRules([
+        ...rules,
+        {
+          id: "",
+          field: "",
+          operator: "",
+          value: "",
+        },
+      ]);
+    }
+    setAddClick(false);
+  }, [addClick]);
   return (
     <Popup
       trigger={<button className="button"> Open Modal </button>}
@@ -27,12 +44,12 @@ export const PopupComponent = () => {
           <div className="header"> Query Builder </div>
           <div className="content">
             <div className="noFilter">No filters applied</div>
-            <div className="addIcon">
+            <div className="addIcon" onClick={() => setAddClick(true)}>
               <i className="icon icon--Add"></i>
               Add Filter
             </div>
           </div>
-          <div>{<Selectors />}</div>
+          <div>{<Selectors rules={rules} />}</div>
           <div className="separator"></div>
           <div className="actions">
             <div className="switchers">
