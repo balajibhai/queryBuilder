@@ -10,12 +10,13 @@
   font-family: "FabricMDL2Icons";
   font-style: normal;
   font-weight: normal;
-  speak: none;
   color: #444444;
 }
 
 .icon--Delete:before {
+  font-size: 12px;
   content: "\E74D";
+  cursor: pointer;
 }
 
 .icon--Add:before {
@@ -23,6 +24,7 @@
   font-weight: bolder;
   content: "\E710";
   color: #0078d4;
+  cursor: pointer;
 }
 
 .dropdown {

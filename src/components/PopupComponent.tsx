@@ -24,6 +24,12 @@ export const PopupComponent = () => {
     }
     setAddClick(false);
   }, [addClick]);
+
+  const onDelete = (index: number) => {
+    rules.splice(index, 1);
+    setRules([...rules]);
+  };
+
   return (
     <Popup
       trigger={<button className="button"> Open Modal </button>}
@@ -49,7 +55,7 @@ export const PopupComponent = () => {
               Add Filter
             </div>
           </div>
-          <div>{<Selectors rules={rules} />}</div>
+          <div>{<Selectors rules={rules} onDelete={onDelete} />}</div>
           <div className="separator"></div>
           <div className="actions">
             <div className="switchers">

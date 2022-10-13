@@ -4,17 +4,21 @@ import "../css/Selectors.css";
 
 export interface selectorProps {
   rules: [];
+  onDelete: Function;
 }
 
-const Selectors = ({ rules }: selectorProps) => {
+const Selectors = ({ rules, onDelete }: selectorProps) => {
   return (
     <>
-      {rules.map((item) => {
+      {rules.map((element, index) => {
         return (
           <div className="selectors">
             <DropdownComponent />
             <DropdownComponent />
             <DropdownComponent />
+            <div className="delete" onClick={() => onDelete(index)}>
+              <i className="icon icon--Delete"></i>
+            </div>
           </div>
         );
       })}
