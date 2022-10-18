@@ -67,3 +67,8 @@
   display: flex;
   align-content: center;
 }
+
+.modal .combinators {
+  display: flex;
+  margin: 12px;
+}

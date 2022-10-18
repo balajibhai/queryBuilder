@@ -5,6 +5,7 @@ import "../css/PopupComponent.css";
 import Button from "./Button";
 import Selectors from "./Selectors";
 import { useEffect, useState } from "react";
+import { Radio } from "@visualbi/bifrost-ui/dist/react/forms/Radio";
 
 export const PopupComponent = () => {
   const [addClick, setAddClick] = useState(false);
@@ -49,12 +50,20 @@ export const PopupComponent = () => {
           </button>
           <div className="header"> Query Builder </div>
           <div className="content">
-            <div className="noFilter">No filters applied</div>
+            {rules.length === 0 && (
+              <div className="noFilter">No filters applied</div>
+            )}
             <div className="addIcon" onClick={() => setAddClick(true)}>
               <i className="icon icon--Add"></i>
               Add Filter
             </div>
           </div>
+          {rules.length > 1 && (
+            <div className="combinators">
+              <Radio label="And" value={false} onChange={() => null} />
+              <Radio label="Or" value={true} onChange={() => null} />
+            </div>
+          )}
           <div>{<Selectors rules={rules} onDelete={onDelete} />}</div>
           <div className="separator"></div>
           <div className="actions">
